@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="[School Name] – A premier institution dedicated to academic excellence, character development, and preparing students for a changing world.">
+<meta name="keywords" content="school, education, admissions, academics, excellence">
+<title>[School Name] | Excellence in Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================
+   DESIGN TOKENS
+   ========================================= */
+:root {
+  --navy:      #0B2545;
+  --royal:     #1A5276;
+  --sky:       #2E86C1;
+  --ice:       #AED6F1;
+  --gold:      #D4A017;
+  --gold-lt:   #F0C040;
+  --white:     #FFFFFF;
+  --off-white: #F4F8FC;
+  --slate:     #5D6D7E;
+  --charcoal:  #2C3E50;
+  --muted:     #ECF0F1;
+  --border:    #D5E8F5;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-util:    'DM Sans', system-ui, sans-serif;
+
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 2px 8px rgba(11,37,69,.08);
+  --shadow-md: 0 8px 32px rgba(11,37,69,.12);
+  --shadow-lg: 0 20px 60px rgba(11,37,69,.16);
+  --transition: all .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* =========================================
+   RESET & BASE
+   ========================================= */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--charcoal);background:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+input,textarea,select{font-family:inherit;font-size:1rem}
+section{position:relative}
+
+/* =========================================
+   UTILITY
+   ========================================= */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-eyebrow{font-family:var(--font-util);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--navy);line-height:1.2;margin-bottom:16px}
+.section-subtitle{font-size:1.05rem;color:var(--slate);max-width:600px;line-height:1.7}
+.text-center{text-align:center}
+.text-center .section-subtitle{margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:50px;font-family:var(--font-util);font-weight:600;font-size:.95rem;transition:var(--transition);white-space:nowrap}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,160,23,.35)}
+.btn-outline{border:2px solid rgba(255,255,255,.7);color:var(--white)}
+.btn-outline:hover{background:var(--white);color:var(--navy)}
+.btn-navy{background:var(--navy);color:var(--white)}
+.btn-navy:hover{background:var(--royal);transform:translateY(-2px);box-shadow:0 8px 24px rgba(11,37,69,.3)}
+.btn-sky{background:var(--sky);color:var(--white)}
+.btn-sky:hover{background:var(--royal);transform:translateY(-2px)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* =========================================
+   TOP BAR
+   ========================================= */
+.topbar{background:var(--navy);color:rgba(255,255,255,.8);font-size:.8rem;padding:7px 0;font-family:var(--font-util)}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar-left{display:flex;gap:20px;align-items:center}
+.topbar-left a{color:rgba(255,255,255,.75);display:flex;align-items:center;gap:5px}
+.topbar-left a:hover{color:var(--gold)}
+.topbar-right{display:flex;gap:12px;align-items:center}
+.social-icon{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.8);font-size:.7rem;transition:var(--transition)}
+.social-icon:hover{background:var(--gold);color:var(--navy)}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+.navbar{background:var(--white);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:1000;transition:var(--transition)}
+.navbar.scrolled{box-shadow:0 4px 24px rgba(11,37,69,.15)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.logo-mark{width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--royal));border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--font-display);font-size:1.4rem;font-weight:700;letter-spacing:-.02em}
+.logo-text{line-height:1.2}
+.logo-text strong{display:block;font-family:var(--font-display);font-size:1.1rem;color:var(--navy);font-weight:700}
+.logo-text span{font-size:.7rem;color:var(--slate);font-family:var(--font-util);letter-spacing:.06em;text-transform:uppercase}
+.nav-menu{display:flex;align-items:center;gap:4px}
+.nav-item{position:relative}
+.nav-link{font-family:var(--font-util);font-size:.88rem;font-weight:500;color:var(--charcoal);padding:8px 13px;border-radius:8px;transition:var(--transition);display:flex;align-items:center;gap:4px;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:var(--sky);background:var(--off-white)}
+.nav-link svg{width:12px;height:12px;transition:transform .2s}
+.nav-item:hover .nav-link svg{transform:rotate(180deg)}
+.dropdown{position:absolute;top:calc(100% + 8px);left:0;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-lg);min-width:200px;padding:8px;display:none;border:1px solid var(--border)}
+.nav-item:hover .dropdown{display:block}
+.dropdown a{display:block;padding:8px 14px;border-radius:8px;font-family:var(--font-util);font-size:.87rem;color:var(--charcoal);transition:var(--transition)}
+.dropdown a:hover{background:var(--off-white);color:var(--sky);padding-left:18px}
+.nav-actions{display:flex;gap:10px;align-items:center;flex-shrink:0}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
+.hamburger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:var(--transition)}
+
+/* =========================================
+   MOBILE MENU
+   ========================================= */
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:9999;flex-direction:column;overflow-y:auto;transform:translateX(100%);transition:transform .35s ease}
+.mobile-menu.open{display:flex;transform:none}
+.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.1)}
+.mobile-menu-close{color:var(--white);font-size:1.5rem;background:none;border:none;cursor:pointer}
+.mobile-nav{padding:16px 24px;display:flex;flex-direction:column;gap:4px}
+.mobile-nav a{color:rgba(255,255,255,.85);font-family:var(--font-util);font-weight:500;padding:12px 16px;border-radius:10px;font-size:1rem;transition:var(--transition)}
+.mobile-nav a:hover{background:rgba(255,255,255,.1);color:var(--white)}
+.mobile-nav .sub-link{padding-left:32px;font-size:.9rem;color:rgba(255,255,255,.6)}
+
+/* =========================================
+   HERO
+   ========================================= */
+.hero{min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 50%,#1a3a5c 100%)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80') center/cover no-repeat;opacity:.18}
+.hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(46,134,193,.25) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(212,160,23,.15) 0%,transparent 40%)}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,.2);border:1px solid rgba(212,160,23,.4);color:var(--gold-lt);padding:7px 16px;border-radius:50px;font-family:var(--font-util);font-size:.8rem;font-weight:600;letter-spacing:.08em;margin-bottom:24px}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,6vw,4rem);color:var(--white);line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:var(--gold-lt);font-style:normal}
+.hero p{font-size:1.15rem;color:rgba(255,255,255,.8);line-height:1.75;margin-bottom:36px;max-width:560px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px}
+.hero-stats{position:absolute;bottom:40px;right:0;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:var(--radius-lg);overflow:hidden;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15)}
+.hero-stat{padding:20px 28px;background:rgba(11,37,69,.5);text-align:center}
+.hero-stat strong{display:block;font-family:var(--font-display);font-size:2rem;color:var(--white);line-height:1}
+.hero-stat span{font-size:.75rem;color:rgba(255,255,255,.65);font-family:var(--font-util);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;display:block}
+.scroll-indicator{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.7rem;font-family:var(--font-util);letter-spacing:.1em;text-transform:uppercase;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* =========================================
+   ABOUT STRIP
+   ========================================= */
+.about-strip{padding:90px 0;background:var(--white)}
+.about-strip .grid-2{align-items:center;gap:64px}
+.about-img-wrap{position:relative}
+.about-img-wrap img{border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:var(--gold);color:var(--navy);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow-md);font-family:var(--font-display)}
+.about-badge strong{display:block;font-size:2.2rem;line-height:1}
+.about-badge span{font-size:.8rem;font-family:var(--font-util)}
+.about-strip p{color:var(--slate);line-height:1.8;margin-bottom:16px}
+.about-strip .btn{margin-top:8px}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+.pillar{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--off-white);border-radius:var(--radius);border:1px solid var(--border)}
+.pillar-icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--navy),var(--royal));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:.9rem;flex-shrink:0}
+.pillar h4{font-size:.85rem;font-weight:600;color:var(--navy);font-family:var(--font-util);margin-bottom:2px}
+.pillar p{font-size:.78rem;color:var(--slate);line-height:1.5;margin:0}
+
+/* =========================================
+   STATS BANNER
+   ========================================= */
+.stats-banner{background:linear-gradient(135deg,var(--navy),var(--royal));padding:64px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.1);border-radius:var(--radius-lg);overflow:hidden}
+.stat-card{background:rgba(11,37,69,.4);padding:36px 24px;text-align:center;backdrop-filter:blur(5px)}
+.stat-number{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.2rem);color:var(--white);line-height:1;display:block}
+.stat-label{font-family:var(--font-util);font-size:.75rem;color:rgba(255,255,255,.65);letter-spacing:.1em;text-transform:uppercase;margin-top:8px;display:block}
+.stat-sub{font-size:.8rem;color:var(--gold-lt);font-family:var(--font-util);margin-top:4px;display:block}
+
+/* =========================================
+   WHY CHOOSE US
+   ========================================= */
+.why-section{padding:90px 0;background:var(--off-white)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.feature-card{background:var(--white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border);transition:var(--transition);position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--sky));transform:scaleX(0);transition:transform .3s ease;transform-origin:left}
+.feature-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.feature-card:hover::before{transform:scaleX(1)}
+.feature-icon{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--navy),var(--royal));display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.4rem}
+.feature-card h3{font-family:var(--font-display);font-size:1.15rem;color:var(--navy);margin-bottom:10px}
+.feature-card p{font-size:.88rem;color:var(--slate);line-height:1.7}
+
+/* =========================================
+   PROGRAMS
+   ========================================= */
+.programs{padding:90px 0;background:var(--white)}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.program-card{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:var(--transition)}
+.program-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.program-img{height:200px;background:linear-gradient(135deg,var(--navy),var(--royal));display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.program-img img{width:100%;height:100%;object-fit:cover;opacity:.7}
+.program-body{padding:24px}
+.program-level{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);font-family:var(--font-util);margin-bottom:8px}
+.program-body h3{font-family:var(--font-display);font-size:1.2rem;color:var(--navy);margin-bottom:10px}
+.program-body p{font-size:.85rem;color:var(--slate);line-height:1.7;margin-bottom:16px}
+.program-meta{display:flex;gap:16px;font-size:.78rem;color:var(--slate);font-family:var(--font-util)}
+.program-meta span{display:flex;align-items:center;gap:5px}
+
+/* =========================================
+   NEWS
+   ========================================= */
+.news-section{padding:90px 0;background:var(--off-white)}
+.news-grid{display:grid;grid-template-columns:2fr 1fr;gap:28px;margin-top:48px}
+.news-featured{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:var(--transition)}
+.news-featured:hover{box-shadow:var(--shadow-md)}
+.news-img{height:280px;overflow:hidden}
+.news-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.news-featured:hover .news-img img{transform:scale(1.04)}
+.news-content{padding:28px}
+.news-tag{display:inline-block;background:var(--ice);color:var(--royal);font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:50px;font-family:var(--font-util);margin-bottom:12px}
+.news-content h3{font-family:var(--font-display);font-size:1.3rem;color:var(--navy);margin-bottom:10px;line-height:1.35}
+.news-content p{font-size:.88rem;color:var(--slate);line-height:1.7}
+.news-meta{display:flex;align-items:center;gap:16px;font-size:.78rem;color:var(--slate);font-family:var(--font-util);margin-top:16px}
+.news-sidebar{display:flex;flex-direction:column;gap:16px}
+.news-mini{background:var(--white);border-radius:var(--radius);padding:20px;border:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;transition:var(--transition)}
+.news-mini:hover{box-shadow:var(--shadow-sm);transform:translateX(4px)}
+.news-mini-date{background:var(--navy);color:var(--white);border-radius:8px;padding:8px 10px;text-align:center;flex-shrink:0;min-width:46px}
+.news-mini-date strong{display:block;font-family:var(--font-display);font-size:1.2rem;line-height:1}
+.news-mini-date span{font-size:.65rem;font-family:var(--font-util);letter-spacing:.06em;text-transform:uppercase}
+.news-mini h4{font-family:var(--font-util);font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:4px}
+.news-mini p{font-size:.78rem;color:var(--slate)}
+
+/* =========================================
+   EVENTS
+   ========================================= */
+.events-section{padding:90px 0;background:var(--navy)}
+.events-section .section-title{color:var(--white)}
+.events-section .section-eyebrow{color:var(--gold)}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.event-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:28px;transition:var(--transition)}
+.event-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.event-date-block{display:inline-flex;gap:12px;align-items:center;margin-bottom:18px}
+.event-month{font-family:var(--font-util);font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.event-day{font-family:var(--font-display);font-size:2.8rem;color:var(--white);line-height:1}
+.event-card h3{font-family:var(--font-util);font-size:1rem;font-weight:600;color:var(--white);margin-bottom:8px}
+.event-card p{font-size:.83rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:14px}
+.event-time{font-size:.75rem;color:var(--ice);font-family:var(--font-util);display:flex;align-items:center;gap:5px}
+
+/* =========================================
+   PRINCIPAL
+   ========================================= */
+.principal-section{padding:90px 0;background:var(--white)}
+.principal-inner{background:linear-gradient(135deg,var(--off-white),var(--white));border:1px solid var(--border);border-radius:var(--radius-lg);padding:60px;display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:center}
+.principal-img{position:relative}
+.principal-img img{width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-md)}
+.principal-img::after{content:'"';position:absolute;top:-20px;right:-20px;font-family:var(--font-display);font-size:7rem;color:var(--sky);opacity:.2;line-height:1}
+.principal-quote{font-family:var(--font-display);font-size:1.25rem;color:var(--navy);line-height:1.7;font-style:italic;margin-bottom:24px}
+.principal-name{font-family:var(--font-util);font-weight:600;color:var(--navy);font-size:1rem}
+.principal-title{font-size:.85rem;color:var(--slate);font-family:var(--font-util)}
+
+/* =========================================
+   GALLERY
+   ========================================= */
+.gallery-section{padding:90px 0;background:var(--off-white)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:12px;margin-top:48px}
+.gallery-item{border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,37,69,.8),transparent);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay span{color:var(--white);font-family:var(--font-util);font-size:.85rem;font-weight:500}
+
+/* =========================================
+   LIGHTBOX
+   ========================================= */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90%;max-height:85vh;border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:20px;right:24px;color:var(--white);font-size:2rem;cursor:pointer;line-height:1;opacity:.8;transition:opacity .2s}
+.lightbox-close:hover{opacity:1}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:var(--white);font-size:2rem;cursor:pointer;background:rgba(255,255,255,.1);border:none;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.lightbox-nav:hover{background:rgba(255,255,255,.25)}
+.lightbox-prev{left:16px}
+.lightbox-next{right:16px}
+
+/* =========================================
+   TESTIMONIALS
+   ========================================= */
+.testimonials{padding:90px 0;background:var(--white)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.testimonial-card{background:var(--off-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border);position:relative;transition:var(--transition)}
+.testimonial-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.testimonial-card::before{content:'"';font-family:var(--font-display);font-size:5rem;color:var(--sky);opacity:.15;position:absolute;top:10px;left:20px;line-height:1}
+.stars{color:var(--gold);font-size:.9rem;margin-bottom:16px;letter-spacing:2px}
+.testimonial-card p{font-size:.9rem;color:var(--slate);line-height:1.75;font-style:italic;margin-bottom:20px}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--royal));display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--font-display);font-size:1rem;font-weight:700}
+.author-info strong{display:block;font-size:.88rem;color:var(--navy);font-family:var(--font-util);font-weight:600}
+.author-info span{font-size:.78rem;color:var(--slate)}
+
+/* =========================================
+   ADMISSIONS
+   ========================================= */
+.admissions-section{padding:90px 0;background:linear-gradient(135deg,var(--off-white),var(--white))}
+.admissions-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.admission-steps{margin-top:32px;display:flex;flex-direction:column;gap:20px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--royal));color:var(--white);font-family:var(--font-display);font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.step-content h4{font-family:var(--font-util);font-weight:600;color:var(--navy);margin-bottom:4px}
+.step-content p{font-size:.85rem;color:var(--slate);line-height:1.6}
+.admission-form{background:var(--white);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.admission-form h3{font-family:var(--font-display);font-size:1.4rem;color:var(--navy);margin-bottom:8px}
+.admission-form p{font-size:.85rem;color:var(--slate);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--charcoal);font-family:var(--font-util);margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:.9rem;color:var(--charcoal);transition:border-color .2s,box-shadow .2s;background:var(--off-white)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(46,134,193,.1);background:var(--white)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-success{display:none;background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;padding:14px;border-radius:10px;font-size:.88rem;font-family:var(--font-util);text-align:center;margin-top:12px}
+.form-error{color:#c62828;font-size:.75rem;margin-top:4px;font-family:var(--font-util)}
+
+/* =========================================
+   FACULTY
+   ========================================= */
+.faculty-section{padding:90px 0;background:var(--white)}
+.faculty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+.faculty-card{background:var(--off-white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:var(--transition);text-align:center}
+.faculty-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.faculty-img{height:200px;background:linear-gradient(135deg,var(--navy),var(--royal));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:3rem;color:var(--white);overflow:hidden}
+.faculty-img img{width:100%;height:100%;object-fit:cover}
+.faculty-body{padding:20px}
+.faculty-body h3{font-family:var(--font-util);font-weight:600;color:var(--navy);font-size:.95rem;margin-bottom:4px}
+.faculty-body .subject{font-size:.8rem;color:var(--sky);font-family:var(--font-util);margin-bottom:8px}
+.faculty-body .qual{font-size:.75rem;color:var(--slate)}
+
+/* =========================================
+   CONTACT
+   ========================================= */
+.contact-section{padding:90px 0;background:var(--off-white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;margin-top:48px}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.info-card{background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid var(--border);display:flex;gap:16px;align-items:flex-start}
+.info-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--royal));display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1rem;flex-shrink:0}
+.info-card h4{font-family:var(--font-util);font-weight:600;color:var(--navy);font-size:.9rem;margin-bottom:4px}
+.info-card p{font-size:.83rem;color:var(--slate);line-height:1.6}
+.info-card a{color:var(--sky)}
+.map-wrap{border-radius:var(--radius-lg);overflow:hidden;height:280px;border:1px solid var(--border);background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);font-family:var(--font-util);font-size:.9rem;flex-direction:column;gap:12px;margin-top:24px}
+.map-wrap svg{width:32px;height:32px;opacity:.6}
+.contact-form{background:var(--white);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.contact-form h3{font-family:var(--font-display);font-size:1.4rem;color:var(--navy);margin-bottom:6px}
+.contact-form .subtitle{font-size:.85rem;color:var(--slate);margin-bottom:28px}
+
+/* =========================================
+   NOTICE BOARD
+   ========================================= */
+.notice-board{padding:90px 0;background:var(--navy)}
+.notice-board .section-title{color:var(--white)}
+.notice-board .section-eyebrow{color:var(--gold)}
+.notice-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.notice-list{display:flex;flex-direction:column;gap:14px}
+.notice-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px;display:flex;gap:14px;align-items:flex-start;transition:var(--transition)}
+.notice-item:hover{background:rgba(255,255,255,.1);transform:translateX(4px)}
+.notice-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);margin-top:6px;flex-shrink:0}
+.notice-item h4{font-family:var(--font-util);font-weight:600;color:var(--white);font-size:.9rem;margin-bottom:4px}
+.notice-item p{font-size:.78rem;color:rgba(255,255,255,.5)}
+.notice-item .notice-date{font-size:.72rem;color:var(--gold-lt);font-family:var(--font-util);margin-top:6px;display:block}
+.downloads{display:flex;flex-direction:column;gap:14px}
+.download-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:20px;display:flex;justify-content:space-between;align-items:center;transition:var(--transition)}
+.download-item:hover{background:rgba(255,255,255,.1)}
+.download-info h4{font-family:var(--font-util);font-weight:600;color:var(--white);font-size:.9rem;margin-bottom:3px}
+.download-info p{font-size:.75rem;color:rgba(255,255,255,.5)}
+.download-btn{display:flex;align-items:center;gap:6px;background:rgba(212,160,23,.2);border:1px solid rgba(212,160,23,.4);color:var(--gold-lt);padding:8px 14px;border-radius:50px;font-size:.78rem;font-family:var(--font-util);font-weight:600;white-space:nowrap;cursor:pointer;transition:var(--transition)}
+.download-btn:hover{background:var(--gold);color:var(--navy)}
+
+/* =========================================
+   STUDENT LIFE
+   ========================================= */
+.student-life{padding:90px 0;background:var(--white)}
+.activities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.activity-card{border-radius:var(--radius-lg);overflow:hidden;background:var(--off-white);border:1px solid var(--border);transition:var(--transition)}
+.activity-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.activity-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative}
+.activity-body{padding:22px}
+.activity-body h3{font-family:var(--font-util);font-weight:600;color:var(--navy);font-size:.95rem;margin-bottom:6px}
+.activity-body p{font-size:.83rem;color:var(--slate);line-height:1.6}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.footer{background:var(--charcoal);color:rgba(255,255,255,.75)}
+.footer-top{padding:64px 0 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand p{font-size:.85rem;line-height:1.7;margin:16px 0 20px;color:rgba(255,255,255,.55)}
+.footer-socials{display:flex;gap:10px}
+.footer-socials .social-icon{background:rgba(255,255,255,.08)}
+.footer-col h4{font-family:var(--font-util);font-weight:600;color:var(--white);font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.55);transition:var(--transition);display:flex;align-items:center;gap:6px}
+.footer-col ul li a:hover{color:var(--gold-lt);padding-left:4px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:24px 0;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.35);font-family:var(--font-util);flex-wrap:wrap;gap:12px}
+.footer-bottom a{color:rgba(255,255,255,.4)}
+.footer-bottom a:hover{color:var(--gold-lt)}
+
+/* =========================================
+   BACK TO TOP
+   ========================================= */
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:var(--shadow-md);cursor:pointer;opacity:0;transform:translateY(20px);transition:var(--transition);z-index:800}
+.back-top.show{opacity:1;transform:none}
+.back-top:hover{background:var(--royal)}
+
+/* =========================================
+   PAGE SECTIONS HIDDEN
+   ========================================= */
+.page-section{display:none}
+.page-section.active{display:block}
+#home-page{display:block}
+
+/* =========================================
+   PAGE HERO
+   ========================================= */
+.page-hero{background:linear-gradient(135deg,var(--navy),var(--royal));padding:64px 0;color:var(--white);text-align:center}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3rem);color:var(--white);margin-bottom:12px}
+.page-hero p{color:rgba(255,255,255,.75);font-size:1rem;max-width:560px;margin:0 auto}
+.breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.5);font-family:var(--font-util);margin-top:16px}
+.breadcrumb span{color:rgba(255,255,255,.75)}
+
+/* =========================================
+   CALENDAR PAGE
+   ========================================= */
+.calendar-widget{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);overflow:hidden;border:1px solid var(--border);margin-top:40px}
+.cal-header{background:linear-gradient(135deg,var(--navy),var(--royal));padding:20px 24px;display:flex;justify-content:space-between;align-items:center;color:var(--white)}
+.cal-header h3{font-family:var(--font-display);font-size:1.2rem}
+.cal-nav button{background:rgba(255,255,255,.15);border:none;color:var(--white);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:.9rem;transition:var(--transition)}
+.cal-nav button:hover{background:rgba(255,255,255,.3)}
+.cal-grid{padding:16px}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;gap:4px}
+.cal-day-header{font-size:.72rem;font-weight:600;color:var(--slate);font-family:var(--font-util);padding:8px;letter-spacing:.06em;text-transform:uppercase}
+.cal-day{padding:8px;text-align:center;border-radius:8px;font-size:.85rem;cursor:pointer;transition:var(--transition);font-family:var(--font-util)}
+.cal-day:hover{background:var(--off-white)}
+.cal-day.today{background:var(--navy);color:var(--white);font-weight:600}
+.cal-day.has-event{position:relative}
+.cal-day.has-event::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.cal-day.other-month{color:var(--muted)}
+.events-list-cal{padding:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+.event-list-item{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:var(--off-white)}
+.event-dot{width:8px;height:8px;border-radius:50%;background:var(--sky);flex-shrink:0}
+.event-list-item h4{font-family:var(--font-util);font-size:.85rem;font-weight:600;color:var(--navy)}
+.event-list-item p{font-size:.75rem;color:var(--slate)}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media(max-width:1100px){
+  .hero-stats{display:none}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:900px){
+  .nav-menu,.nav-actions .btn-navy{display:none}
+  .hamburger{display:flex}
+  .grid-2,.about-strip .grid-2{grid-template-columns:1fr}
+  .grid-3,.features-grid,.programs-grid,.events-grid,.testimonials-grid,.activities-grid{grid-template-columns:1fr 1fr}
+  .faculty-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .news-grid{grid-template-columns:1fr}
+  .admissions-inner{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .notice-inner{grid-template-columns:1fr}
+  .principal-inner{grid-template-columns:1fr;padding:40px}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
+  .gallery-item:first-child{grid-column:1;grid-row:1}
+  .about-badge{bottom:10px;right:10px}
+}
+@media(max-width:600px){
+  .grid-3,.features-grid,.programs-grid,.events-grid,.testimonials-grid,.activities-grid,.faculty-grid,.stats-grid,.downloads{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .topbar-left{flex-direction:column;align-items:flex-start;gap:4px}
+  .footer-top{grid-template-columns:1fr}
+  .hero{min-height:100vh;padding-top:20px}
+  .gallery-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <a href="tel:+923001234567">📞 +92 300 123 4567</a>
+      <a href="mailto:info@schoolname.edu.pk">✉ info@schoolname.edu.pk</a>
+      <span>📍 123 Education Avenue, Karachi</span>
+    </div>
+    <div class="topbar-right">
+      <a href="#" class="social-icon" aria-label="Facebook">f</a>
+      <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+      <a href="#" class="social-icon" aria-label="Instagram">▣</a>
+      <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo" onclick="showPage('home')">
+        <div class="logo-mark">S</div>
+        <div class="logo-text">
+          <strong>[School Name]</strong>
+          <span>Excellence in Education</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#" class="nav-link active" onclick="showPage('home');return false">Home</a></li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showPage('about');return false">About <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <div class="dropdown">
+            <a href="#" onclick="showPage('about');return false">About Us</a>
+            <a href="#" onclick="showPage('principal');return false">Principal's Message</a>
+            <a href="#" onclick="showPage('faculty');return false">Faculty & Staff</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showPage('academics');return false">Academics <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <div class="dropdown">
+            <a href="#" onclick="showPage('academics');return false">Academic Programs</a>
+            <a href="#" onclick="showPage('student-life');return false">Student Life</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('admissions');return false">Admissions</a></li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showPage('news');return false">News <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <div class="dropdown">
+            <a href="#" onclick="showPage('news');return false">News & Announcements</a>
+            <a href="#" onclick="showPage('events');return false">Events Calendar</a>
+            <a href="#" onclick="showPage('gallery');return false">Photo Gallery</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('contact');return false">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#" class="btn btn-navy" onclick="showPage('admissions');return false">Apply Now</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      <div class="logo-text">
+        <strong style="color:white">[School Name]</strong>
+        <span style="color:rgba(255,255,255,.5)">Excellence in Education</span>
+      </div>
+    </div>
+    <button class="mobile-menu-close" id="mobileClose">✕</button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#" onclick="showPage('home');closeMobile()">🏠 Home</a>
+    <a href="#" onclick="showPage('about');closeMobile()">ℹ About Us</a>
+    <a href="#" class="sub-link" onclick="showPage('principal');closeMobile()">Principal's Message</a>
+    <a href="#" onclick="showPage('academics');closeMobile()">📚 Academic Programs</a>
+    <a href="#" onclick="showPage('admissions');closeMobile()">📝 Admissions</a>
+    <a href="#" onclick="showPage('faculty');closeMobile()">👩‍🏫 Faculty & Staff</a>
+    <a href="#" onclick="showPage('student-life');closeMobile()">🎭 Student Life</a>
+    <a href="#" onclick="showPage('news');closeMobile()">📰 News & Announcements</a>
+    <a href="#" onclick="showPage('events');closeMobile()">📅 Events Calendar</a>
+    <a href="#" onclick="showPage('gallery');closeMobile()">🖼 Photo Gallery</a>
+    <a href="#" onclick="showPage('contact');closeMobile()">📞 Contact Us</a>
+  </nav>
+</div>
+
+<!-- ========================
+     HOME PAGE
+     ======================== -->
+<div id="home-page" class="page-section active">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Welcome">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="container">
+      <div class="hero-content fade-in">
+        <div class="hero-badge">Established 1985 · 40 Years of Excellence</div>
+        <h1>Shaping Tomorrow's <em>Leaders</em> Today</h1>
+        <p>At [School Name], we nurture curious minds, build strong character, and prepare students for a rapidly changing world — through rigorous academics, enriching arts, and vibrant community life.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn btn-primary" onclick="showPage('admissions');return false">Apply for Admission</a>
+          <a href="#" class="btn btn-outline" onclick="showPage('about');return false">Discover Our School</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>2,400+</strong><span>Students</span></div>
+      <div class="hero-stat"><strong>148</strong><span>Teachers</span></div>
+      <div class="hero-stat"><strong>96%</strong><span>Board Results</span></div>
+      <div class="hero-stat"><strong>38</strong><span>Years Legacy</span></div>
+    </div>
+    <div class="scroll-indicator">↓ Explore</div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip">
+    <div class="container">
+      <div class="grid-2">
+        <div class="about-img-wrap fade-in">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=700&q=80" alt="Students in classroom" loading="lazy">
+          <div class="about-badge">
+            <strong>40</strong>
+            <span>Years of excellence</span>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="section-eyebrow">Who We Are</div>
+          <h2 class="section-title">A Community Built on<br>Learning & Character</h2>
+          <p>[School Name] is a co-educational institution offering Nursery through Grade 12. We combine rigorous academic programs with a broad spectrum of co-curricular activities, fostering students who are intellectually able, socially responsible, and ready to thrive.</p>
+          <p>Our approach is rooted in the belief that every student is uniquely talented. Our dedicated faculty works closely with each learner to help them discover their strengths and reach their fullest potential.</p>
+          <div class="pillars">
+            <div class="pillar">
+              <div class="pillar-icon">🎓</div>
+              <div>
+                <h4>Academic Rigor</h4>
+                <p>Cambridge & Matric curriculum with top results.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">🏅</div>
+              <div>
+                <h4>Co-Curriculars</h4>
+                <p>Sports, arts, debate, and 30+ clubs.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">🌱</div>
+              <div>
+                <h4>Character First</h4>
+                <p>Values-driven environment and mentorship.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-icon">🌍</div>
+              <div>
+                <h4>Global Vision</h4>
+                <p>University placements across 25+ countries.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn btn-navy" onclick="showPage('about');return false">Learn More About Us →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-banner" aria-label="School statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card fade-in">
+          <span class="stat-number" data-target="2400">0</span>
+          <span class="stat-label">Total Students</span>
+          <span class="stat-sub">Across all grades</span>
+        </div>
+        <div class="stat-card fade-in">
+          <span class="stat-number" data-target="148">0</span>
+          <span class="stat-label">Expert Faculty</span>
+          <span class="stat-sub">Avg. 12 yrs experience</span>
+        </div>
+        <div class="stat-card fade-in">
+          <span class="stat-number" data-target="96">0</span>
+          <span class="stat-label">Board Pass Rate %</span>
+          <span class="stat-sub">Matric & O Levels</span>
+        </div>
+        <div class="stat-card fade-in">
+          <span class="stat-number" data-target="350">0</span>
+          <span class="stat-label">Awards Won</span>
+          <span class="stat-sub">National & international</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-section">
+    <div class="container">
+      <div class="text-center fade-in">
+        <div class="section-eyebrow">Why Choose Us</div>
+        <h2 class="section-title">The [School Name] Difference</h2>
+        <p class="section-subtitle">We don't just teach subjects — we build foundations for life. Here's what sets us apart from the rest.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🏫</div>
+          <h3>State-of-the-Art Facilities</h3>
+          <p>Smart classrooms, digital labs, a 4,000-book library, AV studio, and 5-acre sports complex — all designed for 21st-century learning.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">👩‍🏫</div>
+          <h3>Expert & Caring Teachers</h3>
+          <p>Every teacher is subject-certified and undergoes continuous professional development, with a student-to-teacher ratio of just 16:1.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">📊</div>
+          <h3>Proven Academic Results</h3>
+          <p>Consistently ranked among the top 10 schools in the province, with multiple A* holders in O and A Level examinations each year.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔬</div>
+          <h3>STEM Focus</h3>
+          <p>Our robotics lab, coding curriculum, and science Olympiad program encourage students to innovate from an early age.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🎨</div>
+          <h3>Arts & Culture</h3>
+          <p>Music, visual arts, drama, and cultural festivals celebrate creativity and ensure every student finds their passion.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🌐</div>
+          <h3>University Counselling</h3>
+          <p>Dedicated counsellors guide Grade 9–12 students through local and international university applications, scholarships, and career planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS PREVIEW -->
+  <section class="programs">
+    <div class="container">
+      <div class="text-center fade-in">
+        <div class="section-eyebrow">Academic Programs</div>
+        <h2 class="section-title">Pathways for Every Learner</h2>
+        <p class="section-subtitle">From early years to A Levels, our programs are designed to challenge, inspire, and prepare.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card fade-in">
+          <div class="program-img">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=75" alt="Early Years" loading="lazy">
+          </div>
+          <div class="program-body">
+            <div class="program-level">Pre-School · Nursery–KG</div>
+            <h3>Early Years Foundation</h3>
+            <p>Play-based, child-led learning that builds confidence, language, and foundational numeracy in a nurturing environment.</p>
+            <div class="program-meta">
+              <span>📅 Ages 3–5</span>
+              <span>👦 Small classes</span>
+            </div>
+          </div>
+        </div>
+        <div class="program-card fade-in">
+          <div class="program-img">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=500&q=75" alt="Middle School" loading="lazy">
+          </div>
+          <div class="program-body">
+            <div class="program-level">Middle School · Grades 1–8</div>
+            <h3>Primary & Middle Years</h3>
+            <p>A broad curriculum covering core subjects, STEM, languages, and co-curriculars, building independent learners.</p>
+            <div class="program-meta">
+              <span>📅 Ages 5–14</span>
+              <span>🔬 Lab access</span>
+            </div>
+          </div>
+        </div>
+        <div class="program-card fade-in">
+          <div class="program-img">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=75" alt="O & A Levels" loading="lazy">
+          </div>
+          <div class="program-body">
+            <div class="program-level">Secondary · Grades 9–12</div>
+            <h3>O Levels & A Levels</h3>
+            <p>Cambridge International curriculum with 35+ subjects, university counselling, and record-breaking A* results.</p>
+            <div class="program-meta">
+              <span>📅 Ages 14–18</span>
+              <span>🎓 Cambridge</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:36px">
+        <a href="#" class="btn btn-sky" onclick="showPage('academics');return false">View All Programs →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="news-section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px" class="fade-in">
+        <div>
+          <div class="section-eyebrow">Latest Updates</div>
+          <h2 class="section-title" style="margin-bottom:0">News & Announcements</h2>
+        </div>
+        <a href="#" class="btn btn-navy" onclick="showPage('news');return false">All News →</a>
+      </div>
+      <div class="news-grid">
+        <div class="news-featured fade-in">
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80" alt="Annual Science Fair" loading="lazy">
+          </div>
+          <div class="news-content">
+            <span class="news-tag">Academic</span>
+            <h3>Students Sweep National Science Olympiad, Claim 5 Gold Medals</h3>
+            <p>Our Grade 10 and 11 students represented the school at the 34th National Science Olympiad in Islamabad, returning with five gold medals and setting a new provincial record.</p>
+            <div class="news-meta">
+              <span>📅 June 15, 2026</span>
+              <span>👁 3.2k views</span>
+            </div>
+          </div>
+        </div>
+        <div class="news-sidebar">
+          <div class="news-mini fade-in">
+            <div class="news-mini-date"><strong>10</strong><span>Jun</span></div>
+            <div>
+              <h4>Admissions Open for Academic Year 2026–27</h4>
+              <p>Apply now through our online portal. Limited seats in all grades.</p>
+            </div>
+          </div>
+          <div class="news-mini fade-in">
+            <div class="news-mini-date"><strong>05</strong><span>Jun</span></div>
+            <div>
+              <h4>Annual Sports Day — A Grand Success</h4>
+              <p>Over 2,000 spectators witnessed a thrilling day of competition and sportsmanship.</p>
+            </div>
+          </div>
+          <div class="news-mini fade-in">
+            <div class="news-mini-date"><strong>28</strong><span>May</span></div>
+            <div>
+              <h4>New STEM Lab Inaugurated by City Mayor</h4>
+              <p>State-of-the-art robotics and coding facility opens to all students.</p>
+            </div>
+          </div>
+          <div class="news-mini fade-in">
+            <div class="news-mini-date"><strong>20</strong><span>May</span></div>
+            <div>
+              <h4>O Level Results: 42 Students Score Straight A*s</h4>
+              <p>Record-breaking Cambridge results with 96% pass rate across all subjects.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="events-section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px" class="fade-in">
+        <div>
+          <div class="section-eyebrow">What's Coming Up</div>
+          <h2 class="section-title" style="margin-bottom:0">Upcoming Events</h2>
+        </div>
+        <a href="#" class="btn btn-primary" onclick="showPage('events');return false">Full Calendar →</a>
+      </div>
+      <div class="events-grid">
+        <div class="event-card fade-in">
+          <div class="event-date-block">
+            <div class="event-month">Jul</div>
+            <div class="event-day">05</div>
+          </div>
+          <h3>Annual Prize Distribution Ceremony</h3>
+          <p>Celebrating academic and co-curricular excellence. Chief guest: Provincial Education Secretary.</p>
+          <div class="event-time">⏰ 10:00 AM · Main Auditorium</div>
+        </div>
+        <div class="event-card fade-in">
+          <div class="event-date-block">
+            <div class="event-month">Jul</div>
+            <div class="event-day">18</div>
+          </div>
+          <h3>Open House & Admissions Day</h3>
+          <p>Tour the campus, meet faculty, and learn about our programs. All prospective families welcome.</p>
+          <div class="event-time">⏰ 9:00 AM – 2:00 PM · School Grounds</div>
+        </div>
+        <div class="event-card fade-in">
+          <div class="event-date-block">
+            <div class="event-month">Aug</div>
+            <div class="event-day">01</div>
+          </div>
+          <h3>New Academic Year Begins — 2026–27</h3>
+          <p>Welcome assembly for all students and parents with orientation sessions for new admissions.</p>
+          <div class="event-time">⏰ 8:00 AM · School Assembly Hall</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPAL QUOTE -->
+  <section class="principal-section">
+    <div class="container">
+      <div class="principal-inner fade-in">
+        <div class="principal-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="School Principal" loading="lazy">
+        </div>
+        <div>
+          <div class="section-eyebrow">Principal's Message</div>
+          <blockquote class="principal-quote">"Education is not the filling of a pail, but the lighting of a fire. At [School Name], we work every day to ignite that fire in each of our students — inspiring them to think critically, act ethically, and lead courageously."</blockquote>
+          <div class="principal-name">Dr. Ahmed Raza Khan</div>
+          <div class="principal-title">Principal, [School Name] · M.Ed. Harvard, Ph.D. Cambridge</div>
+          <a href="#" class="btn btn-navy" style="margin-top:20px;display:inline-flex" onclick="showPage('principal');return false">Read Full Message →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY PREVIEW -->
+  <section class="gallery-section">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:0" class="fade-in">
+        <div>
+          <div class="section-eyebrow">School Life</div>
+          <h2 class="section-title" style="margin-bottom:0">Glimpses of Our Campus</h2>
+        </div>
+        <a href="#" class="btn btn-navy" onclick="showPage('gallery');return false">Full Gallery →</a>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80" alt="School building" loading="lazy">
+          <div class="gallery-overlay"><span>School Building</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&q=80" alt="Library" loading="lazy">
+          <div class="gallery-overlay"><span>Library</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&q=80" alt="Science Lab" loading="lazy">
+          <div class="gallery-overlay"><span>Science Lab</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" alt="Sports Field" loading="lazy">
+          <div class="gallery-overlay"><span>Sports Field</span></div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Classroom" loading="lazy">
+          <div class="gallery-overlay"><span>Smart Classroom</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="text-center fade-in">
+        <div class="section-eyebrow">What People Say</div>
+        <h2 class="section-title">Voices from Our Community</h2>
+        <p class="section-subtitle">Real experiences from parents, students, and alumni who are part of the [School Name] family.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="stars">★★★★★</div>
+          <p>"Enrolling my daughter here was the best decision I've ever made. The teachers know every child by name and truly care about their growth — academically and as a person."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info">
+              <strong>Sana Mirza</strong>
+              <span>Parent — Grade 7 student</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars">★★★★★</div>
+          <p>"The STEM program here changed my life. I'm now studying Computer Engineering at FAST because of the foundation this school gave me. I owe everything to my teachers."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div class="author-info">
+              <strong>Ali Hassan</strong>
+              <span>Alumni — Class of 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="stars">★★★★★</div>
+          <p>"The co-curricular program here is exceptional. My son discovered his passion for debate and public speaking, and recently won the national inter-school championship. Remarkable!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">F</div>
+            <div class="author-info">
+              <strong>Farrukh Qureshi</strong>
+              <span>Parent — Grade 10 student</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="text-center fade-in">
+        <div class="section-eyebrow">Get In Touch</div>
+        <h2 class="section-title">We'd Love to Hear From You</h2>
+        <p class="section-subtitle">Whether you have a question about admissions, want to schedule a tour, or just want to learn more — reach out anytime.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info fade-in">
+          <div class="info-card">
+            <div class="info-icon">📍</div>
+            <div>
+              <h4>Our Address</h4>
+              <p>123 Education Avenue, Block 4, Gulshan-e-Iqbal<br>Karachi, Sindh 75300, Pakistan</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">📞</div>
+            <div>
+              <h4>Call Us</h4>
+              <p><a href="tel:+923001234567">+92 300 123 4567</a><br><a href="tel:+922134567890">+92 21 3456 7890</a></p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">✉</div>
+            <div>
+              <h4>Email Us</h4>
+              <p><a href="mailto:info@schoolname.edu.pk">info@schoolname.edu.pk</a><br><a href="mailto:admissions@schoolname.edu.pk">admissions@schoolname.edu.pk</a></p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">⏰</div>
+            <div>
+              <h4>Office Hours</h4>
+              <p>Monday – Friday: 7:30 AM – 3:30 PM<br>Saturday: 8:00 AM – 12:00 PM</p>
+            </div>
+          </div>
+          <div class="map-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>📍 123 Education Avenue, Karachi</span>
+            <span style="font-size:.75rem;color:rgba(255,255,255,.4)">[Google Maps would embed here]</span>
+          </div>
+        </div>
+        <div class="contact-form fade-in">
+          <h3>Send Us a Message</h3>
+          <p class="subtitle">We'll respond within one business day.</p>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-name">Your Name *</label>
+                <input type="text" id="c-name" placeholder="Full name" required>
+                <div class="form-error" id="c-name-err"></div>
+              </div>
+              <div class="form-group">
+                <label for="c-email">Email Address *</label>
+                <input type="email" id="c-email" placeholder="your@email.com" required>
+                <div class="form-error" id="c-email-err"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="c-phone">Phone Number</label>
+              <input type="tel" id="c-phone" placeholder="+92 300 000 0000">
+            </div>
+            <div class="form-group">
+              <label for="c-subject">Subject *</label>
+              <select id="c-subject" required>
+                <option value="">Select a topic…</option>
+                <option>Admissions Inquiry</option>
+                <option>Campus Visit / Tour</option>
+                <option>Academic Programs</option>
+                <option>Fee Structure</option>
+                <option>General Question</option>
+              </select>
+              <div class="form-error" id="c-subject-err"></div>
+            </div>
+            <div class="form-group">
+              <label for="c-msg">Message *</label>
+              <textarea id="c-msg" placeholder="Write your message here…" required></textarea>
+              <div class="form-error" id="c-msg-err"></div>
+            </div>
+            <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center">Send Message ✉</button>
+            <div class="form-success" id="c-success">✓ Thank you! Your message has been sent. We'll be in touch soon.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<!-- END HOME PAGE -->
+
+<!-- ========================
+     ABOUT PAGE
+     ======================== -->
+<div id="about-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>About [School Name]</h1>
+      <p>Our story, mission, values, and the vision that drives us every day.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>About Us</span></div>
+    </div>
+  </div>
+  <section style="padding:80px 0;background:var(--white)">
+    <div class="container">
+      <div class="grid-2" style="align-items:center;gap:60px">
+        <div class="fade-in">
+          <div class="section-eyebrow">Our Story</div>
+          <h2 class="section-title">40 Years of Shaping Futures</h2>
+          <p style="color:var(--slate);line-height:1.8;margin-bottom:16px">Founded in 1985 by a group of forward-thinking educators, [School Name] began with just 120 students and a bold mission: to provide world-class education rooted in Pakistani values. Today, we serve over 2,400 students across Nursery to Grade 12.</p>
+          <p style="color:var(--slate);line-height:1.8;margin-bottom:16px">Over four decades, we have evolved from a small neighbourhood school into one of Karachi's most respected educational institutions — consistently producing graduates who go on to lead in medicine, engineering, business, arts, and public service.</p>
+          <p style="color:var(--slate);line-height:1.8">Our alumni include CEOs, surgeons, engineers, artists, and leaders who carry the [School Name] ethos wherever they go: intellectual rigour, moral integrity, and a deep sense of service.</p>
+        </div>
+        <div class="fade-in">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&q=80" alt="School building" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)" loading="lazy">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px">
+        <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border)" class="fade-in">
+          <div style="font-size:2rem;margin-bottom:12px">🎯</div>
+          <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.2rem;margin-bottom:10px">Our Mission</h3>
+          <p style="font-size:.88rem;color:var(--slate);line-height:1.7">To nurture intellectually curious, morally grounded, and globally aware individuals who are equipped to make meaningful contributions to their communities and the world.</p>
+        </div>
+        <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border)" class="fade-in">
+          <div style="font-size:2rem;margin-bottom:12px">🌟</div>
+          <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.2rem;margin-bottom:10px">Our Vision</h3>
+          <p style="font-size:.88rem;color:var(--slate);line-height:1.7">To be the premier school in Pakistan where every student discovers their unique potential and graduates as a confident, compassionate, and capable human being.</p>
+        </div>
+        <div style="background:var(--off-white);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border)" class="fade-in">
+          <div style="font-size:2rem;margin-bottom:12px">💎</div>
+          <h3 style="font-family:var(--font-display);color:var(--navy);font-size:1.2rem;margin-bottom:10px">Our Values</h3>
+          <p style="font-size:.88rem;color:var(--slate);line-height:1.7">Excellence · Integrity · Respect · Compassion · Innovation. These five pillars guide every decision, every lesson, and every interaction within our school community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     PRINCIPAL'S MESSAGE
+     ======================== -->
+<div id="principal-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Principal's Message</h1>
+      <p>A personal note from our school leader on our journey and our shared purpose.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Principal's Message</span></div>
+    </div>
+  </div>
+  <section style="padding:80px 0;background:var(--white)">
+    <div class="container" style="max-width:900px">
+      <div class="principal-inner fade-in" style="grid-template-columns:260px 1fr">
+        <div class="principal-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Dr. Ahmed Raza Khan" loading="lazy">
+          <div style="background:var(--off-white);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-top:16px;text-align:center">
+            <strong style="display:block;color:var(--navy);font-family:var(--font-util);font-size:.9rem">Dr. Ahmed Raza Khan</strong>
+            <span style="font-size:.78rem;color:var(--slate)">M.Ed. Harvard · Ph.D. Cambridge</span>
+            <hr style="border:none;border-top:1px solid var(--border);margin:10px 0">
+            <span style="font-size:.75rem;color:var(--slate)">Principal since 2010</span>
+          </div>
+        </div>
+        <div>
+          <div class="section-eyebrow">Welcome</div>
+          <h2 class="section-title">Dear Students, Parents, and Friends of [School Name],</h2>
+          <div style="color:var(--slate);line-height:1.9;font-size:.95rem">
+            <p style="margin-bottom:18px">It is my deepest honour to lead an institution that has, for four decades, been a beacon of educational excellence and character formation in Karachi. Every morning I walk through these gates, I am inspired anew by the curiosity, energy, and potential of our students.</p>
+            <p style="margin-bottom:18px">At [School Name], we believe that education is far more than the transmission of knowledge. It is about igniting a love for learning that lasts a lifetime. It is about helping young people discover who they are, what they believe in, and how they can serve the world with their unique gifts.</p>
+            <p style="margin-bottom:18px">Our teaching philosophy is guided by three commitments: <strong>academic rigour</strong> that prepares students for the most demanding universities; <strong>character development</strong> that builds integrity, empathy, and resilience; and <strong>opportunity</strong> — ensuring every child, regardless of background, has access to a rich and varied education.</p>
+            <p style="margin-bottom:18px">I am proud of our extraordinary faculty who bring passion and expertise to their classrooms each day. I am proud of our parents who trust us with the most precious responsibility — their children. And I am proudest of our students, who face every challenge with determination and grace.</p>
+            <p>Whether you are a prospective family considering [School Name], a current parent, or an alumni reflecting on your time with us — I welcome you. This school is a community, and the door is always open.</p>
+          </div>
+          <div style="margin-top:28px;font-family:var(--font-display);font-size:1.3rem;color:var(--navy);border-top:1px solid var(--border);padding-top:20px">
+            Dr. Ahmed Raza Khan
+            <div style="font-family:var(--font-util);font-size:.85rem;color:var(--slate);font-weight:400;margin-top:4px">Principal, [School Name]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     ACADEMICS PAGE
+     ======================== -->
+<div id="academics-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Academic Programs</h1>
+      <p>Comprehensive pathways from early childhood through A Levels, designed for every learner.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Academic Programs</span></div>
+    </div>
+  </div>
+  <section style="padding:80px 0;background:var(--white)">
+    <div class="container">
+      <div class="programs-grid">
+        <div class="program-card fade-in">
+          <div class="program-img"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=75" alt="Early Years" loading="lazy"></div>
+          <div class="program-body">
+            <div class="program-level">Pre-School · Ages 3–5</div>
+            <h3>Early Years Foundation</h3>
+            <p>Play-based, Montessori-influenced learning. Focus on language, numeracy, motor skills, and social development in a warm, structured setting.</p>
+            <div class="program-meta"><span>📅 Nursery · Prep · KG</span><span>📚 Urdu & English</span></div>
+          </div>
+        </div>
+        <div class="program-card fade-in">
+          <div class="program-img"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=500&q=75" alt="Primary" loading="lazy"></div>
+          <div class="program-body">
+            <div class="program-level">Primary School · Grades 1–5</div>
+            <h3>Cambridge Primary</h3>
+            <p>Internationally benchmarked Cambridge curriculum covering English, Mathematics, Science, Urdu, Islamiyat, and Arts. Regular checkpoint assessments.</p>
+            <div class="program-meta"><span>📅 Ages 5–10</span><span>🌐 Bilingual</span></div>
+          </div>
+        </div>
+        <div class="program-card fade-in">
+          <div class="program-img"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=75" alt="Middle School" loading="lazy"></div>
+          <div class="program-body">
+            <div class="program-level">Middle School · Grades 6–8</div>
+            <h3>Cambridge Lower Secondary</h3>
+            <p>Extended curriculum including Computer Science, French, and elective arts. Rigorous preparation for IGCSE and Matric board examinations.</p>
+            <div class="program-meta"><span>📅 Ages 11–13</span><span>🔬 Lab science</span></div>
+          </div>
+        </div>
+        <div class="program-card fade-in">
+          <div class="program-img"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&q=75" alt="O Levels" loading="lazy"></div>
+          <div class="program-body">
+            <div class="program-level">Secondary · Grades 9–10</div>
+            <h3>O Levels / Matric</h3>
+            <p>35+ Cambridge IGCSE subjects or Federal Board Matric. Expert subject teachers, past paper practice, and comprehensive revision sessions.</p>
+            <div class="program-meta"><span>📅 Ages 14–16</span><span>🎓 CAIE / FBISE</span></div>
+          </div>
+        </div>
+        <div class="program-card fade-in">
+          <div class="program-img"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=75" alt="A Levels" loading="lazy"></div>
+          <div class="program-body">
+            <div class="program-level">Higher Secondary · Grades 11–12</div>
+            <h3>A Levels / FSc</h3>
+            <p>In-depth study in chosen subject combinations (Sciences, Commerce, Humanities). University counselling starts in Grade 11 with dedicated advisors.</p>
+            <div class="program-meta"><span>📅 Ages 16–18</span><span>🌍 UK / Global unis</span></div>
+          </div>
+        </div>
+        <div class="program-card fade-in">
+          <div class="program-img" style="background:linear-gradient(135deg,#1a5276,#0b2545)"><div style="font-size:3rem">🏆</div></div>
+          <div class="program-body">
+            <div class="program-level">Enrichment · All Grades</div>
+            <h3>STEM & Olympiad Program</h3>
+            <p>Intensive training for national and international Olympiads in Mathematics, Physics, Chemistry, Biology, and Computer Science. Multiple gold medalists.</p>
+            <div class="program-meta"><span>📅 Grades 5–12</span><span>🥇 Champions</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     ADMISSIONS PAGE
+     ======================== -->
+<div id="admissions-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Admissions</h1>
+      <p>Join the [School Name] family. We welcome students from all backgrounds who share our passion for learning.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Admissions</span></div>
+    </div>
+  </div>
+  <section class="admissions-section" style="display:block;padding:80px 0">
+    <div class="container">
+      <div class="admissions-inner">
+        <div class="fade-in">
+          <div class="section-eyebrow">How to Apply</div>
+          <h2 class="section-title">Admission Process</h2>
+          <p style="color:var(--slate);margin-bottom:8px">Admissions for the Academic Year 2026–27 are now open. Places are limited — we encourage early applications.</p>
+          <div class="admission-steps">
+            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Submit Inquiry Form</h4><p>Complete the online form below with your child's details and desired grade level. We'll confirm receipt within 24 hours.</p></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Entrance Assessment</h4><p>Students in Grade 1 and above sit a short assessment in English, Mathematics, and General Knowledge. Pre-school applicants have an informal observation session.</p></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Interview</h4><p>Shortlisted families meet with our admissions coordinator and subject heads to discuss the student's profile and the school's expectations.</p></div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Offer Letter</h4><p>Successful candidates receive a formal offer letter within 7 working days. Fee deposit confirms the seat.</p></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Enrolment & Orientation</h4><p>Complete documentation, collect uniform & stationery, and attend our new student orientation before the term begins.</p></div></div>
+          </div>
+          <div style="background:var(--ice);border-radius:var(--radius);padding:20px;margin-top:24px;border-left:4px solid var(--royal)">
+            <h4 style="font-family:var(--font-util);color:var(--navy);font-size:.9rem;margin-bottom:6px">📋 Documents Required</h4>
+            <p style="font-size:.82rem;color:var(--slate);line-height:1.7">Birth certificate · Previous school reports (last 2 years) · B-Form / CNIC copies · Passport-size photographs (4) · Character certificate from previous school · Medical fitness certificate</p>
+          </div>
+        </div>
+        <div class="admission-form fade-in">
+          <h3>Online Admission Inquiry</h3>
+          <p>Fill in the form and our admissions team will contact you within 24 hours.</p>
+          <form id="admissionForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Student's First Name *</label>
+                <input type="text" id="a-fname" placeholder="First name" required>
+                <div class="form-error" id="a-fname-err"></div>
+              </div>
+              <div class="form-group">
+                <label>Student's Last Name *</label>
+                <input type="text" id="a-lname" placeholder="Last name" required>
+                <div class="form-error" id="a-lname-err"></div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date of Birth *</label>
+                <input type="date" id="a-dob" required>
+                <div class="form-error" id="a-dob-err"></div>
+              </div>
+              <div class="form-group">
+                <label>Applying for Grade *</label>
+                <select id="a-grade" required>
+                  <option value="">Select grade…</option>
+                  <option>Nursery</option><option>KG</option>
+                  <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option><option>Grade 4</option><option>Grade 5</option>
+                  <option>Grade 6</option><option>Grade 7</option><option>Grade 8</option>
+                  <option>Grade 9</option><option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+                </select>
+                <div class="form-error" id="a-grade-err"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Parent / Guardian Name *</label>
+              <input type="text" id="a-parent" placeholder="Full name" required>
+              <div class="form-error" id="a-parent-err"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="a-email" placeholder="parent@email.com" required>
+                <div class="form-error" id="a-email-err"></div>
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="a-phone" placeholder="+92 300 000 0000" required>
+                <div class="form-error" id="a-phone-err"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Previous School</label>
+              <input type="text" id="a-school" placeholder="Current/previous school name">
+            </div>
+            <div class="form-group">
+              <label>Additional Notes</label>
+              <textarea id="a-notes" placeholder="Any special requirements or questions…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Submit Inquiry →</button>
+            <div class="form-success" id="a-success">✓ Inquiry submitted! Our admissions team will contact you within 24 hours.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     FACULTY PAGE
+     ======================== -->
+<div id="faculty-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Faculty & Staff</h1>
+      <p>Meet the dedicated professionals who bring learning to life every day.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Faculty & Staff</span></div>
+    </div>
+  </div>
+  <section class="faculty-section" style="display:block;padding:80px 0">
+    <div class="container">
+      <div class="text-center fade-in">
+        <div class="section-eyebrow">Our Team</div>
+        <h2 class="section-title">148 Passionate Educators</h2>
+        <p class="section-subtitle">Every member of our faculty holds advanced qualifications and brings genuine enthusiasm for their subject.</p>
+      </div>
+      <div class="faculty-grid" style="margin-top:48px">
+        <div class="faculty-card fade-in">
+          <div class="faculty-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=75" alt="Dr. Ahmed Raza Khan" loading="lazy"></div>
+          <div class="faculty-body"><h3>Dr. Ahmed Raza Khan</h3><div class="subject">Principal</div><div class="qual">Ph.D. Cambridge · M.Ed. Harvard</div></div>
+        </div>
+        <div class="faculty-card fade-in">
+          <div class="faculty-img" style="background:linear-gradient(135deg,#1a5276,#2e86c1)"><span>ZA</span></div>
+          <div class="faculty-body"><h3>Ms. Zara Ahmed</h3><div class="subject">Head of Sciences</div><div class="qual">M.Sc. Physics · 15 yrs experience</div></div>
+        </div>
+        <div class="faculty-card fade-in">
+          <div class="faculty-img" style="background:linear-gradient(135deg,#0b2545,#1a5276)"><span>KM</span></div>
+          <div class="faculty-body"><h3>Mr. Kamran Malik</h3><div class="subject">Head of Mathematics</div><div class="qual">M.Phil. Math · Cambridge Trained</div></div>
+        </div>
+        <div class="faculty-card fade-in">
+          <div class="faculty-img" style="background:linear-gradient(135deg,#1a5276,#0b2545)"><span>SH</span></div>
+          <div class="faculty-body"><h3>Ms. Sara Hassan</h3><div class="subject">Head of English</div><div class="qual">MA English Lit · Oxford Certified</div></div>
+        </div>
+        <div class="faculty-card fade-in">
+          <div class="faculty-img" style="background:linear-gradient(135deg,#2e86c1,#1a5276)"><span>NQ</span></div>
+          <div class="faculty-body"><h3>Mr. Naeem Qureshi</h3><div class="subject">Head of Computer Science</div><div class="qual">M.Sc. CS · 12 yrs experience</div></div>
+        </div>
+        <div class="faculty-card fade-in">
+          <div class="faculty-img" style="background:linear-gradient(135deg,#0b2545,#2e86c1)"><span>FR</span></div>
+          <div class="faculty-body"><h3>Ms. Fatima Rehman</h3><div class="subject">Head of Early Years</div><div class="qual">M.Ed. Early Childhood · Montessori</div></div>
+        </div>
+        <div class="faculty-card fade-in">
+          <div class="faculty-img" style="background:linear-gradient(135deg,#1a5276,#0b2545)"><span>TK</span></div>
+          <div class="faculty-body"><h3>Mr. Tariq Khan</h3><div class="subject">Head of Sports</div><div class="qual">BSc Sports Science · National Coach</div></div>
+        </div>
+        <div class="faculty-card fade-in">
+          <div class="faculty-img" style="background:linear-gradient(135deg,#2e86c1,#0b2545)"><span>AA</span></div>
+          <div class="faculty-body"><h3>Ms. Ayesha Ali</h3><div class="subject">Admissions Coordinator</div><div class="qual">MBA · Counselling Certified</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     STUDENT LIFE PAGE
+     ======================== -->
+<div id="student-life-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Student Life</h1>
+      <p>Beyond the classroom — a vibrant world of sports, arts, clubs, and community.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Student Life</span></div>
+    </div>
+  </div>
+  <section class="student-life" style="display:block;padding:80px 0">
+    <div class="container">
+      <div class="text-center fade-in">
+        <div class="section-eyebrow">Life at School</div>
+        <h2 class="section-title">Something for Everyone</h2>
+        <p class="section-subtitle">Our co-curricular program is as strong as our academics. We believe well-rounded students become exceptional adults.</p>
+      </div>
+      <div class="activities-grid" style="margin-top:48px">
+        <div class="activity-card fade-in">
+          <div class="activity-img" style="background:linear-gradient(135deg,var(--navy),var(--royal))"><span>⚽</span></div>
+          <div class="activity-body"><h3>Sports & Athletics</h3><p>Cricket, football, basketball, swimming, badminton, and athletics — we compete at district, provincial, and national levels with dedicated coaches.</p></div>
+        </div>
+        <div class="activity-card fade-in">
+          <div class="activity-img" style="background:linear-gradient(135deg,#7b2d8b,#9b59b6)"><span>🎭</span></div>
+          <div class="activity-body"><h3>Drama & Performing Arts</h3><p>Annual theatre productions, a school choir, and performing arts ensemble. Students regularly perform at city-level cultural competitions.</p></div>
+        </div>
+        <div class="activity-card fade-in">
+          <div class="activity-img" style="background:linear-gradient(135deg,#1a8a4a,#27ae60)"><span>🎨</span></div>
+          <div class="activity-body"><h3>Visual Arts & Photography</h3><p>Dedicated art studios, ceramics workshops, and a dark room. Student artworks are displayed at our annual gallery exhibition open to the public.</p></div>
+        </div>
+        <div class="activity-card fade-in">
+          <div class="activity-img" style="background:linear-gradient(135deg,#b7770d,#d4a017)"><span>💬</span></div>
+          <div class="activity-body"><h3>Debate & Model UN</h3><p>Our debate team has won 12 national championships. MUN participants engage with global issues and develop public speaking and critical thinking skills.</p></div>
+        </div>
+        <div class="activity-card fade-in">
+          <div class="activity-img" style="background:linear-gradient(135deg,#16537e,#2e86c1)"><span>🤖</span></div>
+          <div class="activity-body"><h3>Robotics & Coding Club</h3><p>Weekly sessions in our STEM lab where students build robots, design apps, and compete in national and international tech competitions.</p></div>
+        </div>
+        <div class="activity-card fade-in">
+          <div class="activity-img" style="background:linear-gradient(135deg,#a93226,#e74c3c)"><span>❤️</span></div>
+          <div class="activity-body"><h3>Community Service</h3><p>The Social Action Programme (SAP) connects students with NGOs, hospitals, and environmental projects — building empathy and civic responsibility.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     NEWS PAGE
+     ======================== -->
+<div id="news-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>News & Announcements</h1>
+      <p>Stay up to date with the latest happenings at [School Name].</p>
+      <div class="breadcrumb">Home <span>›</span> <span>News</span></div>
+    </div>
+  </div>
+  <section class="notice-board" style="display:block">
+    <div class="container">
+      <div class="notice-inner">
+        <div>
+          <div class="section-eyebrow">Notice Board</div>
+          <h2 class="section-title" style="color:var(--white)">Latest Notices</h2>
+          <div class="notice-list" style="margin-top:24px">
+            <div class="notice-item"><div class="notice-dot"></div><div><h4>Admission Forms Available — 2026-27</h4><p>Online and paper applications now open. Last date: July 31, 2026.</p><span class="notice-date">Posted: June 10, 2026</span></div></div>
+            <div class="notice-item"><div class="notice-dot"></div><div><h4>Parent-Teacher Meeting — Grade 9 & 10</h4><p>Scheduled for June 28, 2026 from 9 AM – 1 PM. All parents are requested to attend.</p><span class="notice-date">Posted: June 8, 2026</span></div></div>
+            <div class="notice-item"><div class="notice-dot"></div><div><h4>Revised Summer Timetable Effective June 25</h4><p>School timings change to 7:00 AM – 12:30 PM for the summer months.</p><span class="notice-date">Posted: June 5, 2026</span></div></div>
+            <div class="notice-item"><div class="notice-dot"></div><div><h4>Annual Prize Distribution — July 5, 2026</h4><p>Parents of award recipients will receive personal invitations by courier.</p><span class="notice-date">Posted: June 1, 2026</span></div></div>
+            <div class="notice-item"><div class="notice-dot"></div><div><h4>Fee Due Date Reminder — Q1 2026-27</h4><p>First quarter fees are due by August 15, 2026. Late fees apply after this date.</p><span class="notice-date">Posted: May 28, 2026</span></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="section-eyebrow">Downloads</div>
+          <h2 class="section-title" style="color:var(--white)">Resources & Brochures</h2>
+          <div class="downloads" style="margin-top:24px">
+            <div class="download-item"><div class="download-info"><h4>School Prospectus 2026–27</h4><p>PDF · 4.2 MB · Full overview</p></div><button class="download-btn">⬇ Download</button></div>
+            <div class="download-item"><div class="download-info"><h4>Academic Calendar 2026–27</h4><p>PDF · 1.1 MB · Term dates & holidays</p></div><button class="download-btn">⬇ Download</button></div>
+            <div class="download-item"><div class="download-info"><h4>Admission Form (Printable)</h4><p>PDF · 0.8 MB · All grades</p></div><button class="download-btn">⬇ Download</button></div>
+            <div class="download-item"><div class="download-info"><h4>Fee Structure 2026–27</h4><p>PDF · 0.5 MB · All levels</p></div><button class="download-btn">⬇ Download</button></div>
+            <div class="download-item"><div class="download-info"><h4>School Uniform Policy</h4><p>PDF · 0.3 MB · Boys & girls uniform guide</p></div><button class="download-btn">⬇ Download</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="padding:80px 0;background:var(--off-white)">
+    <div class="container">
+      <div class="section-eyebrow">Recent Stories</div>
+      <h2 class="section-title">School News</h2>
+      <div class="news-grid" style="margin-top:32px">
+        <div class="news-featured fade-in">
+          <div class="news-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80" alt="Science Olympiad" loading="lazy"></div>
+          <div class="news-content">
+            <span class="news-tag">Academic</span>
+            <h3>Students Sweep National Science Olympiad, Claim 5 Gold Medals</h3>
+            <p>Our Grade 10 and 11 students represented the school at the 34th National Science Olympiad in Islamabad, returning with five gold medals and setting a new provincial record in Chemistry.</p>
+            <div class="news-meta"><span>📅 June 15, 2026</span><span>👁 3.2k views</span></div>
+          </div>
+        </div>
+        <div class="news-sidebar">
+          <div class="news-mini fade-in"><div class="news-mini-date"><strong>05</strong><span>Jun</span></div><div><h4>Annual Sports Day — A Grand Success</h4><p>2,000+ spectators watched an exciting day of athletic competition.</p></div></div>
+          <div class="news-mini fade-in"><div class="news-mini-date"><strong>28</strong><span>May</span></div><div><h4>New STEM Lab Inaugurated by City Mayor</h4><p>A state-of-the-art robotics and coding facility opens to all students.</p></div></div>
+          <div class="news-mini fade-in"><div class="news-mini-date"><strong>20</strong><span>May</span></div><div><h4>O Level Results: 42 Students Score Straight A*s</h4><p>Record-breaking Cambridge results with 96% pass rate across subjects.</p></div></div>
+          <div class="news-mini fade-in"><div class="news-mini-date"><strong>12</strong><span>May</span></div><div><h4>School Debate Team Wins National Championship</h4><p>Third consecutive national title in the All-Pakistan Schools Debate Competition.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     EVENTS PAGE
+     ======================== -->
+<div id="events-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Events Calendar</h1>
+      <p>Plan ahead with our full schedule of academic, cultural, and community events.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Events Calendar</span></div>
+    </div>
+  </div>
+  <section style="padding:80px 0;background:var(--off-white)">
+    <div class="container" style="max-width:900px">
+      <div class="calendar-widget fade-in">
+        <div class="cal-header">
+          <h3 id="cal-month-label">July 2026</h3>
+          <div class="cal-nav" style="display:flex;gap:8px">
+            <button onclick="calNav(-1)">‹</button>
+            <button onclick="calNav(1)">›</button>
+          </div>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-days" id="cal-days-header">
+            <div class="cal-day-header">Sun</div><div class="cal-day-header">Mon</div><div class="cal-day-header">Tue</div><div class="cal-day-header">Wed</div><div class="cal-day-header">Thu</div><div class="cal-day-header">Fri</div><div class="cal-day-header">Sat</div>
+          </div>
+          <div class="cal-days" id="cal-days" style="margin-top:4px"></div>
+        </div>
+        <div class="events-list-cal" id="events-list-cal"></div>
+      </div>
+      <div class="events-section" style="margin-top:32px;border-radius:var(--radius-lg);overflow:hidden;padding:60px 40px">
+        <div class="section-eyebrow">All Upcoming</div>
+        <h2 class="section-title">Events This Term</h2>
+        <div class="events-grid" style="margin-top:32px">
+          <div class="event-card"><div class="event-date-block"><div class="event-month">Jul</div><div class="event-day">05</div></div><h3>Annual Prize Distribution</h3><p>Celebrating academic and co-curricular excellence with the Provincial Education Secretary as chief guest.</p><div class="event-time">⏰ 10:00 AM · Auditorium</div></div>
+          <div class="event-card"><div class="event-date-block"><div class="event-month">Jul</div><div class="event-day">18</div></div><h3>Open House & Admissions Day</h3><p>Tour the campus, meet faculty, and learn about our 2026–27 programs for prospective families.</p><div class="event-time">⏰ 9 AM–2 PM · School Grounds</div></div>
+          <div class="event-card"><div class="event-date-block"><div class="event-month">Aug</div><div class="event-day">01</div></div><h3>New Academic Year Begins</h3><p>Welcome assembly and orientation for all students. New admissions orientation at 7:30 AM.</p><div class="event-time">⏰ 8:00 AM · Assembly Hall</div></div>
+          <div class="event-card"><div class="event-date-block"><div class="event-month">Aug</div><div class="event-day">14</div></div><h3>Independence Day Celebration</h3><p>National Day ceremony, flag hoisting, parade, and cultural performances by students.</p><div class="event-time">⏰ 7:30 AM · School Grounds</div></div>
+          <div class="event-card"><div class="event-date-block"><div class="event-month">Sep</div><div class="event-day">20</div></div><h3>Inter-House Sports Competition</h3><p>Three days of inter-house athletics, cricket, football and swimming across all age groups.</p><div class="event-time">⏰ 8 AM – 3 PM · Sports Complex</div></div>
+          <div class="event-card"><div class="event-date-block"><div class="event-month">Oct</div><div class="event-day">10</div></div><h3>Annual Science & STEM Fair</h3><p>Students present projects in robotics, chemistry, biology, and coding. Open to public from 2–5 PM.</p><div class="event-time">⏰ 10 AM – 5 PM · Main Hall</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     GALLERY PAGE
+     ======================== -->
+<div id="gallery-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Photo Gallery</h1>
+      <p>A visual journey through life at [School Name] — academics, sports, arts, and beyond.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Photo Gallery</span></div>
+    </div>
+  </div>
+  <section style="padding:80px 0;background:var(--off-white)">
+    <div class="container">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px" class="fade-in">
+        <button class="btn btn-navy" onclick="filterGallery('all',this)">All Photos</button>
+        <button class="btn" style="border:1.5px solid var(--border);color:var(--charcoal)" onclick="filterGallery('academics',this)">Academics</button>
+        <button class="btn" style="border:1.5px solid var(--border);color:var(--charcoal)" onclick="filterGallery('sports',this)">Sports</button>
+        <button class="btn" style="border:1.5px solid var(--border);color:var(--charcoal)" onclick="filterGallery('events',this)">Events</button>
+        <button class="btn" style="border:1.5px solid var(--border);color:var(--charcoal)" onclick="filterGallery('campus',this)">Campus</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" id="galleryGrid">
+        <div class="gallery-item" data-cat="campus" onclick="openLightbox(0)" style="height:220px"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&q=80" alt="School Building" loading="lazy"><div class="gallery-overlay"><span>School Building</span></div></div>
+        <div class="gallery-item" data-cat="academics" onclick="openLightbox(1)" style="height:220px"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Classroom" loading="lazy"><div class="gallery-overlay"><span>Smart Classroom</span></div></div>
+        <div class="gallery-item" data-cat="academics" onclick="openLightbox(2)" style="height:220px"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Library" loading="lazy"><div class="gallery-overlay"><span>Library</span></div></div>
+        <div class="gallery-item" data-cat="sports" onclick="openLightbox(3)" style="height:220px"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Sports Field" loading="lazy"><div class="gallery-overlay"><span>Sports Day</span></div></div>
+        <div class="gallery-item" data-cat="events" onclick="openLightbox(4)" style="height:220px"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Prize Day" loading="lazy"><div class="gallery-overlay"><span>Prize Distribution</span></div></div>
+        <div class="gallery-item" data-cat="academics" onclick="openLightbox(5)" style="height:220px"><img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="Science Lab" loading="lazy"><div class="gallery-overlay"><span>Science Lab</span></div></div>
+        <div class="gallery-item" data-cat="events" onclick="openLightbox(6)" style="height:220px"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="Graduation" loading="lazy"><div class="gallery-overlay"><span>Graduation Day</span></div></div>
+        <div class="gallery-item" data-cat="campus" onclick="openLightbox(7)" style="height:220px"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80" alt="Library" loading="lazy"><div class="gallery-overlay"><span>Reading Room</span></div></div>
+        <div class="gallery-item" data-cat="sports" onclick="openLightbox(8)" style="height:220px"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80" alt="Basketball" loading="lazy"><div class="gallery-overlay"><span>Basketball Court</span></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================
+     CONTACT PAGE
+     ======================== -->
+<div id="contact-page" class="page-section">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>We're always happy to hear from students, parents, and prospective families.</p>
+      <div class="breadcrumb">Home <span>›</span> <span>Contact</span></div>
+    </div>
+  </div>
+  <section class="contact-section" style="display:block">
+    <div class="container">
+      <div class="contact-grid" style="margin-top:48px">
+        <div class="contact-info fade-in">
+          <div class="info-card"><div class="info-icon">📍</div><div><h4>Our Address</h4><p>123 Education Avenue, Block 4<br>Gulshan-e-Iqbal, Karachi 75300</p></div></div>
+          <div class="info-card"><div class="info-icon">📞</div><div><h4>Phone Numbers</h4><p><a href="tel:+923001234567">+92 300 123 4567</a> (Main)<br><a href="tel:+922134567890">+92 21 3456 7890</a> (Admissions)</p></div></div>
+          <div class="info-card"><div class="info-icon">✉</div><div><h4>Email Addresses</h4><p><a href="mailto:info@schoolname.edu.pk">info@schoolname.edu.pk</a><br><a href="mailto:admissions@schoolname.edu.pk">admissions@schoolname.edu.pk</a></p></div></div>
+          <div class="info-card"><div class="info-icon">⏰</div><div><h4>Office Hours</h4><p>Mon–Fri: 7:30 AM – 3:30 PM<br>Saturday: 8:00 AM – 12:00 PM<br>Sunday & Public Holidays: Closed</p></div></div>
+          <div class="map-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>123 Education Avenue, Karachi</span>
+            <span style="font-size:.75rem;color:rgba(255,255,255,.4)">View on Google Maps ↗</span>
+          </div>
+        </div>
+        <div class="contact-form fade-in">
+          <h3>Send a Message</h3>
+          <p class="subtitle">Response guaranteed within 1 business day.</p>
+          <form id="contactForm2" novalidate>
+            <div class="form-row">
+              <div class="form-group"><label>Your Name *</label><input type="text" id="c2-name" placeholder="Full name" required><div class="form-error" id="c2-name-err"></div></div>
+              <div class="form-group"><label>Email *</label><input type="email" id="c2-email" placeholder="email@example.com" required><div class="form-error" id="c2-email-err"></div></div>
+            </div>
+            <div class="form-group"><label>Phone</label><input type="tel" id="c2-phone" placeholder="+92 300 000 0000"></div>
+            <div class="form-group"><label>Department</label>
+              <select id="c2-dept">
+                <option>General Inquiry</option><option>Admissions</option><option>Accounts & Fees</option><option>Transport</option><option>Academic Affairs</option><option>Principal's Office</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Message *</label><textarea id="c2-msg" placeholder="How can we help you?" style="min-height:130px" required></textarea><div class="form-error" id="c2-msg-err"></div></div>
+            <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center">Send Message ✉</button>
+            <div class="form-success" id="c2-success">✓ Message sent successfully! We'll be in touch within 24 hours.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+  <img src="" alt="Gallery image" id="lightbox-img">
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">›</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:0">
+          <div class="logo-mark">S</div>
+          <div class="logo-text">
+            <strong style="color:white">[School Name]</strong>
+            <span style="color:rgba(255,255,255,.4)">Excellence in Education</span>
+          </div>
+        </div>
+        <p>Nurturing curious minds and building strong character since 1985. A proud institution at the heart of Karachi's educational landscape.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" aria-label="Facebook">f</a>
+          <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-icon" aria-label="Instagram">▣</a>
+          <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home');return false">▸ Home</a></li>
+          <li><a href="#" onclick="showPage('about');return false">▸ About Us</a></li>
+          <li><a href="#" onclick="showPage('principal');return false">▸ Principal's Message</a></li>
+          <li><a href="#" onclick="showPage('academics');return false">▸ Academic Programs</a></li>
+          <li><a href="#" onclick="showPage('admissions');return false">▸ Admissions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>School Life</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('faculty');return false">▸ Faculty & Staff</a></li>
+          <li><a href="#" onclick="showPage('student-life');return false">▸ Student Life</a></li>
+          <li><a href="#" onclick="showPage('news');return false">▸ News & Notices</a></li>
+          <li><a href="#" onclick="showPage('events');return false">▸ Events Calendar</a></li>
+          <li><a href="#" onclick="showPage('gallery');return false">▸ Photo Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">▸ 123 Education Ave, Karachi</a></li>
+          <li><a href="tel:+923001234567">▸ +92 300 123 4567</a></li>
+          <li><a href="mailto:info@schoolname.edu.pk">▸ info@schoolname.edu.pk</a></li>
+          <li><a href="#" onclick="showPage('contact');return false">▸ Contact Form</a></li>
+          <li><a href="#" onclick="showPage('admissions');return false">▸ Apply Now</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 [School Name]. All rights reserved.</span>
+      <div style="display:flex;gap:20px">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+/* =====================
+   PAGE ROUTING
+   ===================== */
+function showPage(name) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(name + '-page');
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  // Update active nav link
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const pageNavMap = {home:'Home',about:'About',principal:'About',academics:'Academics',admissions:'Admissions',faculty:'About',news:'News','student-life':'Academics',events:'News',gallery:'News',contact:''};
+  document.querySelectorAll('.nav-link').forEach(l => {
+    if(l.textContent.trim().startsWith(pageNavMap[name]||'XXX')) l.classList.add('active');
+  });
+  observeFadeIns();
+}
+
+/* =====================
+   MOBILE MENU
+   ===================== */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+function closeMobile(){ mobileMenu.classList.remove('open'); }
+
+/* =====================
+   STICKY NAV
+   ===================== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+});
+
+/* =====================
+   COUNTER ANIMATION
+   ===================== */
+function animateCounter(el){
+  const target = parseInt(el.dataset.target);
+  const duration = 1800;
+  const start = Date.now();
+  const tick = () => {
+    const elapsed = Date.now() - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const suffix = el.dataset.target === '96' ? '%' : '+';
+    el.textContent = Math.round(ease * target).toLocaleString() + (progress < 1 ? '' : suffix);
+    if(progress < 1) requestAnimationFrame(tick);
+  };
+  tick();
+}
+
+/* =====================
+   INTERSECTION OBSERVER
+   ===================== */
+function observeFadeIns(){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // Counter
+        const num = e.target.querySelector('[data-target]') || (e.target.hasAttribute && e.target.dataset.target ? e.target : null);
+        if(e.target.matches('.stat-card')){
+          const n = e.target.querySelector('[data-target]');
+          if(n && !n.classList.contains('counted')){ n.classList.add('counted'); animateCounter(n); }
+        }
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el => io.observe(el));
+}
+observeFadeIns();
+
+/* =====================
+   LIGHTBOX
+   ===================== */
+const galleryImages = [
+  'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=85',
+  'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=85',
+  'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=1200&q=85',
+  'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1200&q=85',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=85',
+  'https://images.unsplash.com/photo-1588072432836-e10032774350?w=1200&q=85',
+  'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=85',
+  'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=85',
+  'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=85',
+];
+let currentImg = 0;
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightbox-img');
+function openLightbox(i){ currentImg = i; lbImg.src = galleryImages[i]; lb.classList.add('active'); document.body.style.overflow='hidden'; }
+function closeLightbox(){ lb.classList.remove('active'); document.body.style.overflow=''; }
+function lightboxNav(dir){ currentImg = (currentImg + dir + galleryImages.length) % galleryImages.length; lbImg.src = galleryImages[currentImg]; }
+lb.addEventListener('click', e => { if(e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', e => { if(!lb.classList.contains('active')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowLeft') lightboxNav(-1); if(e.key==='ArrowRight') lightboxNav(1); });
+
+/* =====================
+   GALLERY FILTER
+   ===================== */
+function filterGallery(cat, btn){
+  document.querySelectorAll('#galleryGrid .gallery-item, .gallery-item[data-cat]').forEach(item => {
+    if(cat==='all' || item.dataset.cat===cat) item.style.display=''; else item.style.display='none';
+  });
+  // Update buttons
+  document.querySelectorAll('[onclick*="filterGallery"]').forEach(b => {
+    b.classList.remove('btn-navy'); b.style.border='1.5px solid var(--border)'; b.style.color='var(--charcoal)';
+  });
+  if(btn){ btn.classList.add('btn-navy'); btn.style.border=''; btn.style.color=''; }
+}
+
+/* =====================
+   FORM VALIDATION
+   ===================== */
+function validateField(id, errId, msg, type){
+  const val = document.getElementById(id)?.value.trim();
+  const errEl = document.getElementById(errId);
+  if(!errEl) return true;
+  if(!val){ errEl.textContent = msg; return false; }
+  if(type==='email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){ errEl.textContent='Please enter a valid email.'; return false; }
+  errEl.textContent=''; return true;
+}
+
+const contactForm = document.getElementById('contactForm');
+if(contactForm){
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = [
+      validateField('c-name','c-name-err','Name is required.'),
+      validateField('c-email','c-email-err','Email is required.','email'),
+      validateField('c-subject','c-subject-err','Please select a subject.'),
+      validateField('c-msg','c-msg-err','Message is required.'),
+    ];
+    if(v.every(Boolean)){
+      document.getElementById('c-success').style.display='block';
+      contactForm.reset();
+      setTimeout(() => document.getElementById('c-success').style.display='none', 5000);
+    }
+  });
+}
+
+const admissionForm = document.getElementById('admissionForm');
+if(admissionForm){
+  admissionForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = [
+      validateField('a-fname','a-fname-err','First name is required.'),
+      validateField('a-lname','a-lname-err','Last name is required.'),
+      validateField('a-dob','a-dob-err','Date of birth is required.'),
+      validateField('a-grade','a-grade-err','Please select a grade.'),
+      validateField('a-parent','a-parent-err','Parent name is required.'),
+      validateField('a-email','a-email-err','Email is required.','email'),
+      validateField('a-phone','a-phone-err','Phone number is required.'),
+    ];
+    if(v.every(Boolean)){
+      document.getElementById('a-success').style.display='block';
+      admissionForm.reset();
+    }
+  });
+}
+
+const contactForm2 = document.getElementById('contactForm2');
+if(contactForm2){
+  contactForm2.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = [
+      validateField('c2-name','c2-name-err','Name is required.'),
+      validateField('c2-email','c2-email-err','Email is required.','email'),
+      validateField('c2-msg','c2-msg-err','Message is required.'),
+    ];
+    if(v.every(Boolean)){
+      document.getElementById('c2-success').style.display='block';
+      contactForm2.reset();
+      setTimeout(() => document.getElementById('c2-success').style.display='none', 5000);
+    }
+  });
+}
+
+/* =====================
+   CALENDAR WIDGET
+   ===================== */
+const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const eventDays = {5:['Annual Prize Distribution — 10 AM'],18:['Open House & Admissions Day'],26:['PTM — Grades 9 & 10']};
+let calYear = 2026, calMonth = 6; // July 2026
+
+function renderCalendar(){
+  document.getElementById('cal-month-label').textContent = months[calMonth] + ' ' + calYear;
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const prevDays = new Date(calYear, calMonth, 0).getDate();
+  let html = '';
+  const today = new Date();
+  for(let i = firstDay - 1; i >= 0; i--){
+    html += `<div class="cal-day other-month">${prevDays - i}</div>`;
+  }
+  for(let d = 1; d <= daysInMonth; d++){
+    const isToday = d===today.getDate() && calMonth===today.getMonth() && calYear===today.getFullYear();
+    const hasEvent = eventDays[d] ? ' has-event' : '';
+    html += `<div class="cal-day${isToday?' today':''}${hasEvent}" title="${eventDays[d]?eventDays[d].join(', '):''}">${d}</div>`;
+  }
+  document.getElementById('cal-days').innerHTML = html;
+  let evHtml = '';
+  Object.entries(eventDays).forEach(([d,evs]) => {
+    evs.forEach(ev => {
+      evHtml += `<div class="event-list-item"><div class="event-dot"></div><div><h4>${ev}</h4><p>${months[calMonth]} ${d}, ${calYear}</p></div></div>`;
+    });
+  });
+  document.getElementById('events-list-cal').innerHTML = evHtml;
+}
+
+function calNav(dir){
+  calMonth += dir;
+  if(calMonth > 11){ calMonth = 0; calYear++; }
+  if(calMonth < 0){ calMonth = 11; calYear--; }
+  renderCalendar();
+}
+
+renderCalendar();
+
+/* =====================
+   DOWNLOAD BUTTONS
+   ===================== */
+document.querySelectorAll('.download-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Downloading…';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+});
+</script>
+</body>
+</html>
